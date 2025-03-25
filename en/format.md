@@ -1,6 +1,6 @@
 ## Object-Oriented Prompt Design Format (OOPD Format): Structured Prompt Description for Users
 
-The Object-Oriented Prompt Design (OOPD) format is a prompt description format that applies Object-Oriented Programming (OOP) concepts to help users understand, and for AI to understand the intent of prompts more deeply and generate consistent, structured responses.
+The Object-Oriented Prompt Design (OOPD) format is a prompt description format that functions as a common language for effective communication between users and AI. This format utilizes the concepts of Object-Oriented Programming (OOP) and is designed to be easily understood by users, while also enabling AI to more deeply comprehend the intent of the prompts. This facilitates the generation of consistent and structured responses.
 It defines how to describe OOP elements such as classes and objects using Markdown format as a base, and also includes regular Markdown format instructions. It is a flexible format that allows you to describe both instructions for AI and structured information.
 
 - Change the heading hierarchy appropriately to match the document hierarchy. This example uses "###".

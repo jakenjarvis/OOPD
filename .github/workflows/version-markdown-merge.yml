@@ -36,15 +36,23 @@ jobs:
         run: ./scripts/merge_md.sh
 
       - name: Commit and push changes
+        id: commit_push
         run: |
-          git add en/system_instructions.md
-          git add ja/system_instructions.md
-          git add en/system_instructions_consolidated.md
-          git add ja/system_instructions_consolidated.md
+          if [[ -n $(git status --porcelain) ]]; then
+            git add en/system_instructions.md
+            git add ja/system_instructions.md
+            git add en/system_instructions_consolidated.md
+            git add ja/system_instructions_consolidated.md
 
-          git commit -m "Update system instructions and version"
+            git commit -m "Update system instructions and version"
+            echo "::set-output name=committed::true"
+          else
+            echo "No changes to commit."
+            echo "::set-output name=committed::false"
+          fi
 
       - name: Push changes and tags
+        if: steps.commit_push.outputs.committed == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

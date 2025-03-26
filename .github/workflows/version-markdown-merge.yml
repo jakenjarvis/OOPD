@@ -43,5 +43,10 @@ jobs:
           git add ja/system_instructions_consolidated.md
 
           git commit -m "Update system instructions and version"
-          git push origin main
-          git push origin --tags
+
+      - name: Push changes and tags
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.DEPLOY_KEY }}
+          branch: ${{ github.ref }}
+          tags: true

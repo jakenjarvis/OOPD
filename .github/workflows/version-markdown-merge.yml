@@ -1,0 +1,47 @@
+name: Version and Markdown Management
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  version_and_merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Increment version
+        run: |
+          chmod +x scripts/*.sh
+          ./scripts/increment_version.sh
+
+      - name: Set tag
+        run: ./scripts/set_tag.sh
+
+      - name: Replace Markdown contents
+        run: ./scripts/replace_md.sh
+
+      - name: Merge Markdown files
+        run: ./scripts/merge_md.sh
+
+      - name: Commit and push changes
+        run: |
+          git add en/system_instructions.md
+          git add ja/system_instructions.md
+          git add en/system_instructions_consolidated.md
+          git add ja/system_instructions_consolidated.md
+
+          git commit -m "Update system instructions and version"
+          git push origin main
+          git push origin --tags

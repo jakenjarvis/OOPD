@@ -45,10 +45,10 @@ jobs:
             git add ja/system_instructions_consolidated.md
 
             git commit -m "Update system instructions and version"
-            echo "::set-output name=committed::true"
+            echo "committed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No changes to commit."
-            echo "::set-output name=committed::false"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Push changes and tags

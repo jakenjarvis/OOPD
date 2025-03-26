@@ -97,6 +97,14 @@ This chapter defines the **most important** terminology for AI to utilize Object
   - Avoid inheritance as much as possible.
   - Composition/Aggregation is recommended.
 
+### Namespace (ネームスペース)
+
+- Definition: A mechanism that provides a namespace for identifiers such as classes and objects.
+- Key points:
+  - **Avoid name collisions:** By defining classes and objects with the same name in different namespaces, you can prevent name collisions and handle them separately.
+  - **Improve code organization and readability:** By grouping highly related classes and objects into namespaces, you can organize the code and improve readability.
+  - **Improve modularity:** Namespaces make it possible to divide modules by function, improving reusability and maintainability.
+
 ### Instructions for AI Application (Particularly important)
 
 The object-oriented concepts in this document are **tools for understanding the intent of prompts and generating structured, consistent responses**. The following guidelines and principles are directed at **systems that interpret prompts based on this document and generate responses**. Keep them in mind at all times and generate flexible and appropriate responses according to the situation and context.
@@ -112,6 +120,9 @@ The object-oriented concepts in this document are **tools for understanding the 
 - Maintain consistency in the concepts of classes and objects used throughout the response.
 - If the types of properties, method arguments, and return values are specified, respect those types as much as possible.
 - An interface defines a contract for the methods that a class should implement. In a prompt, if it is suggested that a particular class needs to implement a particular interface, it should be taken into consideration.
+- Namespace Interpretation: Interpret which namespace a class definition in the prompt belongs to.
+- Class Identification Considering Namespaces: Even if the class names are the same, identify them as different classes if the namespaces are different.
+- Namespace Specification When Generating Objects: When object generation is instructed in a prompt, generate the object considering the namespace to which it belongs. In particular, if a namespace is specified, generate an instance of the class belonging to that namespace.
 
 **2. Handling Programming Elements:**
 

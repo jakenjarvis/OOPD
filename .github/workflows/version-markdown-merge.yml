@@ -47,6 +47,6 @@ jobs:
       - name: Push changes and tags
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           tags: true

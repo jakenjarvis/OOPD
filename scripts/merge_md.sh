@@ -29,10 +29,18 @@ for CONFIG in "${MERGE_CONFIG[@]}"; do
 
   OUTPUT_PATH="${GITHUB_WORKSPACE}/${OUTPUT_FILE}"
 
-  if ! cat "${FILE_PATHS[@]}" > "$OUTPUT_PATH"; then
-    echo "Error: Failed to merge files into ${OUTPUT_FILE}"
-    exit 1
-  fi
+  > "$OUTPUT_PATH"
+  for ((i=0; i<${#FILE_PATHS[@]}; i++)); do
+    if ! cat "${FILE_PATHS[i]}" >> "$OUTPUT_PATH"; then
+      echo "Error: Failed to merge files into ${OUTPUT_FILE}"
+      exit 1
+    fi
+
+    if [[ $i -lt $((${#FILE_PATHS[@]} - 1)) ]]; then
+      echo "" >> "$OUTPUT_PATH"
+      echo "" >> "$OUTPUT_PATH"
+    fi
+  done
 
   echo "Successfully merged files into ${OUTPUT_FILE}"
 done

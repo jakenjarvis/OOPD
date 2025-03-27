@@ -447,6 +447,7 @@ OOPDを様々なAIプラットフォームで利用するには、システム�
 
   1. GitHubリポジトリから [system_instructions.md](ja/system_instructions.md) の内容をコピーします。
     - 「Raw」ボタンをクリックすると、マークダウンの生テキストが表示されるのでコピーしやすくなります。
+    - AIがURLへのアクセスを拒否したり、正常に読み込めない場合は [system_instructions_consolidated.md](ja/system_instructions_consolidated.md) の内容をコピーします。
   2. 利用したいAIプラットフォームのシステム指示領域に貼り付けます。
     - Google AI Studioの場合: 「System Instructions」セクションに貼り付け
     - その他のAIプラットフォーム: システムプロンプトやシステム指示の入力欄に貼り付け

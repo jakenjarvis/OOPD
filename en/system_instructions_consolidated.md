@@ -144,6 +144,8 @@ Before outputting, perform a **self-check** to confirm the following points (nev
 If any of these points apply, **replace them with more abstract expressions or reinforce them with natural language explanations.**
 
 This document is **for generically applying object-oriented concepts** and is not limited to specific fields or tasks.
+
+
 ## Object-Oriented Prompt Design Format (OOPD Format): Structured Prompt Description for Users
 
 The OOPD Format (Object-Oriented Prompt Design Format) is a prompt description format that functions as a common language for effective communication between users and AI. This format leverages the concepts of Object-Oriented Programming (OOP) and is designed to be easily understood by users, while also enabling AI to more deeply comprehend the intent of the prompts. This facilitates the generation of consistent and structured responses.

@@ -1,6 +1,6 @@
-# OOPD 拡張型定義 (Extended Types Definition)
+## OOPD 拡張型定義 (Extended Types Definition)
 
-## 拡張型とは
+### 拡張型とは
 
 このドキュメントは、Object-Oriented Prompt Design (OOPD) における**拡張型 (Extended Types)** を定義します。拡張型は、OOPDのコアとなる**標準型 (Standard Types)** を補完し、特定のドメインや利用シーンにおいてプロンプトの意図をより明確にし、AIとのコミュニケーションを円滑にすることを目的とした、意味的・具体的な型です。
 
@@ -8,7 +8,7 @@
 
 拡張型の使用は**オプション**ですが、これらを利用することで、より表現豊かで構造化されたプロンプト設計が可能になります。拡張型も標準型と同様に、**プロンプトの記述言語に関わらず、定義された英語表記で記述**します。
 
-## 拡張型リスト (一覧)
+### 拡張型リスト (一覧)
 
 AIがこれらの拡張型名を固定キーワードとして認識するために、以下のリストを定義します。
 
@@ -18,11 +18,11 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 }
 ```
 
-## 各拡張型の詳細
+### 各拡張型の詳細
 
 以下に、定義された各拡張型とその詳細を示します。
 
-### 1. `ContentString`
+#### `ContentString`
 
 - **意味 (Meaning):**
   主要な長文テキストコンテンツを表します。記事、レポート、メール本文、物語など、AIが処理・生成する中心的なテキストブロックを示すことを意図しています。
@@ -37,7 +37,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`
 
-### 2. `Instruction`
+#### `Instruction`
 
 - **意味 (Meaning):**
   AIに対する具体的な指示、命令、またはタスク記述を表します。プロンプト内の他の部分（データやコンテキスト）と区別して、AIに実行してほしいアクションを明確に示します。
@@ -50,7 +50,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`
 
-### 3. `Persona`
+#### `Persona`
 
 - **意味 (Meaning):**
   AIに演じさせたい役割、キャラクター、専門家などのペルソナ設定を表します。AIの応答スタイル、口調、知識レベル、思考様式などを規定します。
@@ -63,7 +63,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`, `Dictionary`
 
-### 4. `OutputStyle`
+#### `OutputStyle`
 
 - **意味 (Meaning):**
   AIが生成する出力の形式、文体、トーンなどを指定するための複合的な型。どのように応答を整形してほしいかを伝えます。
@@ -78,7 +78,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `Dictionary`, `String`, `Number`
 
-### 5. `CodeBlock`
+#### `CodeBlock`
 
 - **意味 (Meaning):**
   特定のプログラミング言語で書かれたコードの断片を表します。言語の種類を属性として持つことが想定されます。
@@ -92,7 +92,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`, `Dictionary`
 
-### 6. `Ref`
+#### `Ref`
 
 - **意味 (Meaning):**
   何らかのリソース（Webページ, ファイル, APIエンドポイント, データ, 画像, 音声, 動画など）への参照や位置を示す情報。URI (Uniform Resource Identifier) の概念に近いです。
@@ -107,7 +107,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`, `UniqueID` (参照先がIDの場合)
 
-### 7. `SchemaDefinition`
+#### `SchemaDefinition`
 
 - **意味 (Meaning):**
   データの構造定義、スキーマ、データモデルなどを表します。JSON Schema、クラス定義、データベーススキーマなどが該当します。
@@ -121,7 +121,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`, `JsonString`, `YamlString`
 
-### 8. `JsonString`
+#### `JsonString`
 
 - **意味 (Meaning):**
   JSON (JavaScript Object Notation) 形式で記述されたデータを表す文字列。
@@ -134,7 +134,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`
 
-### 9. `YamlString`
+#### `YamlString`
 
 - **意味 (Meaning):**
   YAML (YAML Ain't Markup Language) 形式で記述されたデータを表す文字列。
@@ -147,7 +147,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`
 
-### 10. `XmlString`
+#### `XmlString`
 
 - **意味 (Meaning):**
   XML (Extensible Markup Language) 形式で記述されたデータを表す文字列。HTMLやXHTMLの表現にも使用できます。
@@ -159,7 +159,7 @@ AIがこれらの拡張型名を固定キーワードとして認識するため
 - **関連する標準型 (Related Standard Types):**
   - `String`
 
-### 11. `Color`
+#### `Color`
 
 - **意味 (Meaning):**
   色を表す値。

@@ -50,7 +50,6 @@ MERGE_CONFIG: List[Tuple[str, bool, ...]] = [
         (".github/workflows/version-markdown-merge.yml", True),
         ("scripts/increment_version.sh", True),
         ("scripts/set_tag.sh", True),
-        ("scripts/replace_md.sh", True),
         ("scripts/merge_md.py", True),
 
         "output/github_workflows_all.md"

@@ -41,11 +41,7 @@ jobs:
         id: commit_push
         run: |
           if [[ -n $(git status --porcelain) ]]; then
-            git add en/system_instructions.md
-            git add ja/system_instructions.md
-            git add en/system_instructions_consolidated.md
-            git add ja/system_instructions_consolidated.md
-
+            git add .
             git commit -m "Update system instructions and version"
             echo "committed=true" >> "$GITHUB_OUTPUT"
           else

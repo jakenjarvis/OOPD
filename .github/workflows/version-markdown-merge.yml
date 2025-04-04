@@ -16,6 +16,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Setup Git
         run: |
           git config user.name "GitHub Actions"
@@ -33,7 +38,7 @@ jobs:
         run: ./scripts/replace_md.sh
 
       - name: Merge Markdown files
-        run: ./scripts/merge_md.sh
+        run: python ./scripts/merge_md.py
 
       - name: Commit and push changes
         id: commit_push

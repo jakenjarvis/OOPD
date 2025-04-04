@@ -34,9 +34,6 @@ jobs:
       - name: Set tag
         run: ./scripts/set_tag.sh
 
-      - name: Replace Markdown contents
-        run: ./scripts/replace_md.sh
-
       - name: Merge Markdown files
         run: python ./scripts/merge_md.py
 

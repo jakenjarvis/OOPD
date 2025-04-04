@@ -71,8 +71,6 @@ MERGE_CONFIG: List[Tuple[str, ...]] = [
     # ),
 ]
 
-# --- ヘルパー関数 (Helper Functions) ---
-
 def get_language_name(file_path: pathlib.Path) -> str:
     """ファイルパスの拡張子に基づいて言語識別子を決定する。"""
     extension: str = file_path.suffix.lower()
@@ -113,8 +111,6 @@ def write_file_content_with_block(
         print(f"Error: An unexpected error occurred processing {infile_path} - {e}", file=sys.stderr)
         return False
 
-# --- メイン処理 (Main Logic) ---
-
 def merge_files(
     input_filenames: Tuple[str, ...], # 入力ファイル名のタプル
     output_filename: str,             # 出力ファイル名
@@ -146,7 +142,6 @@ def merge_files(
         # --- ファイルの書き込み ---
         with output_path.open("w", encoding="utf-8") as outfile:
             all_written_successfully = True
-            # 各入力ファイルを処理
             for i, infile_path in enumerate(input_paths):
                 # ファイル内容をコードブロックで書き込む
                 if not write_file_content_with_block(outfile, infile_path, workspace_path):
@@ -166,12 +161,10 @@ def merge_files(
         return True
 
     except IOError as e:
-        # 出力ファイルのオープンや書き込みに関するエラー
         print(f"Error: Could not open or write output file {relative_output_path} - {e}", file=sys.stderr)
         return False
 
     except Exception as e:
-        # その他の予期せぬエラー
         print(f"Error: An unexpected error occurred during merging to {relative_output_path} - {e}", file=sys.stderr)
         return False
 

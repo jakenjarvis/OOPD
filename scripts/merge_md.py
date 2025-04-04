@@ -10,6 +10,7 @@ import os
 import sys
 import pathlib
 import shutil
+import re
 from typing import Dict, List, Tuple, TextIO
 
 # スクリプト実行のベースとなるディレクトリ (通常はリポジトリのルート)
@@ -123,6 +124,18 @@ def get_language_name(file_path: pathlib.Path) -> str:
     # マッピングに存在すればその値を、なければ "Text" を返す
     return LANGUAGE_MAP.get(extension, "Text")
 
+def replace_version_in_file(file_path: pathlib.Path, new_version: str) -> None:
+    """ファイル内のバージョン番号を置換する"""
+    try:
+        content = file_path.read_text(encoding="utf-8")
+        updated_content = re.sub(r"v[0-9]+\.[0-9]+\.[0-9]+", new_version, content)
+        file_path.write_text(updated_content, encoding="utf-8")
+        print(f"Updated version in {file_path.name} to {new_version}")
+    except FileNotFoundError:
+        print(f"Warning: File {file_path.name} not found.")
+    except Exception as e:
+        print(f"Error: An error occurred during version replacement in {file_path.name}: {e}")
+
 def write_file_content(
     outfile: TextIO,                # 書き込み先のファイルオブジェクト
     infile_path: pathlib.Path,      # 読み込む入力ファイルのパス
@@ -223,6 +236,14 @@ def main():
     print("Starting file merge process...")
     overall_success = True
 
+    # version.txtから新しいバージョン番号を読み取る
+    try:
+        with open("version.txt", "r") as f:
+            new_version = f.read().strip()
+    except FileNotFoundError:
+        print("Error: version.txt not found.", file=sys.stderr)
+        sys.exit(1)
+
     # for development
     # ファイルコピーを実行
     for source_filename, destination_filename in COPY_CONFIG:
@@ -236,6 +257,12 @@ def main():
 
         output_filename = config[-1]
         input_configs = [(fname, use_codeblock) for fname, use_codeblock in config[:-1]]
+
+        # ファイル内のバージョン番号を置換
+        for fname, _ in input_configs:
+            file_path = WORKSPACE_PATH / fname
+            if file_path.suffix.lower() == ".md":
+                replace_version_in_file(file_path, new_version)
 
         if not merge_files(input_configs, output_filename, WORKSPACE_PATH):
             overall_success = False

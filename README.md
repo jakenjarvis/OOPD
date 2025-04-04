@@ -1,6 +1,6 @@
 # Object-Oriented Prompt Design (OOPD)
 
-**Note:** This is the original repository for the Object-Oriented Prompt Design (OOPD) concept. Please refer to this repository for the latest updates and ensure proper attribution if reusing.
+**Note:** [This](https://github.com/jakenjarvis/OOPD) is the original repository for the Object-Oriented Prompt Design (OOPD) concept. Please refer to this repository for the latest updates and ensure proper attribution if reusing.
 
 ## Overview
 

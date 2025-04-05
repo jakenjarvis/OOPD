@@ -52,33 +52,33 @@ This document (`format_definition.md`) explains the strict rules specific to the
       - End: Right after the element definition, before the colon (`:`), and a space. Do not enclose the colon and description in backticks.
       - The value list of enums are not enclosed in backticks.
 - **Property Definition:**
-  - Format (Native): `- `{English Hub Name}::{Native Name}: {TypeName}`: {Description}`
-  - Format (English): `- `{English Name}: {TypeName}`: {Description}`
+  - Format (Native): - `{English Hub Name}::{Native Name}: {TypeName}`: {Description}
+  - Format (English): - `{English Name}: {TypeName}`: {Description}
   - **Optional Items:**
     - In property definitions, optional items can be indicated by adding `, {Optional Specifier}` after the type name (refer to `core.md` for the term for the optional specifier).
-      - Example (Japanese): `- プロパティ名: String, オプション`
-      - Example (English): `- propertyName: String, Optional`
+      - Example (Japanese): - `プロパティ名: String, オプション`
+      - Example (English): - `propertyName: String, Optional`
 - **Method Definition:**
-  - Format (Native): `- `{English Hub Name}::{Native Name}({Argument List}): {ReturnTypeName}`: {Description}`
-  - Format (English): `- `{English Name}({Argument List}): {ReturnTypeName}`: {Description}`
+  - Format (Native): - `{English Hub Name}::{Native Name}({Argument List}): {ReturnTypeName}`: {Description}
+  - Format (English): - `{English Name}({Argument List}): {ReturnTypeName}`: {Description}
   - **Return Value:** `Void` can be omitted, but **inclusion is recommended**. Do not add an English hub name to the type name.
   - **Argument List:** Comma-separated `{argumentName}: {TypeName}` or `{argumentName}: {TypeName} = {defaultValue}`. Do not add English hub names to argument names, type names, or default values.
   - **Default Values:**
     - In method definitions, default values can be expressed by adding `= {defaultValue}` after the argument's type name. Only literal values (`True`, `False`, `Null`, numbers, strings) are recommended.
-      - Example (Japanese): `- メソッド名(引数名: Number = 0): Void`
-      - Example (English): `- methodName(argumentName: Number = 0): Void`
+      - Example (Japanese): - `メソッド名(引数名: Number = 0): Void`
+      - Example (English): - `methodName(argumentName: Number = 0): Void`
 - **Event Definition:**
-  - Format (Native): `- `{English Hub Name}::{Native Name}({Argument List})`: {Description}`
-  - Format (English): `- `{English Name}({Argument List})`: {Description}`
+  - Format (Native): - `{English Hub Name}::{Native Name}({Argument List})`: {Description}
+  - Format (English): - `{English Name}({Argument List})`: {Description}
   - **Return Value:** Usually `Void`, but **omitting the notation is recommended**.
   - Rules for the argument list are the same as for methods.
 - **Enum Definition:**
-  - Format (Native): `- `{English Hub Name}::{Native Name}`: {Value List}`
-  - Format (English): `- `{English Name}`: {Value List}`
+  - Format (Native): - `{English Hub Name}::{Native Name}`: {Value List}
+  - Format (English): - `{English Name}`: {Value List}
   - **Value List:** List comma-separated values in the format `{English Hub Name}::{Native Name}` (or English only).
 - **Struct Class Definition (Inferred):**
-  - Format (Native): `- `{English Hub Name}::{Native Name}`: {Description}`
-  - Format (English): `- `{English Name}`: {Description}`
+  - Format (Native): - `{English Hub Name}::{Native Name}`: {Description}
+  - Format (English): - `{English Name}`: {Description}
 - **Base Class and Interface Implementation:**
   - As described in `format_common.md`, use the **Basic Terms for the respective language**.
   - **Inheritance:**

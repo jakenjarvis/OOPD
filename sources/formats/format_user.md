@@ -14,7 +14,7 @@ This document (`format_user.md`) explains the rules, characteristics, and recomm
 - **Omission of English Hub Names:**
   - For parts where `{English Hub Name}::` or `({English Hub Name})` is added in the `Definition Format` (such as class names, interface names, property names, method names, etc.), these **do not need to be written** in the User Format. Describe using only the native language name. The AI internally infers and manages the English hub name.
   - Example (Class Heading): `#### CustomerClass: A class to manage customer information` (OK)
-  - Example (Property): `- \`name: String\`: Customer's name` (OK)
+  - Example (Property): - `name: String`: Customer's name (OK)
 - **Headings:**
   - Describing modules (`##`) or sections (`###`) is **not mandatory**. Users can use them to organize definitions as needed.
   - For class (`####`) or interface (`####`) headings, describe the native language name and the description.

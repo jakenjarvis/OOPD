@@ -12,11 +12,11 @@
 
 AIがこれらの拡張型名を固定キーワードとして認識するために、以下のリストを定義します。
 
-```json
+~~~json
 {
   "ExtendedTypes": ["ContentString", "Instruction", "Persona", "OutputStyle", "CodeBlock", "Ref", "SchemaDefinition", "JsonString", "YamlString", "XmlString", "Color"]
 }
-```
+~~~
 
 ### 拡張型の実体/表現について
 

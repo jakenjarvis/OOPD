@@ -46,9 +46,11 @@ This document (`format_definition.md`) explains the strict rules specific to the
 - **Definition of List Format Elements (Properties, Methods, Events, Enums, Structs):**
   - Start the line with a Markdown list hyphen `-`.
   - **Scope of Backticks `` ` ``:**
-    - **Properties, Methods, Events:** Enclose the main part of the definition (from immediately after the hyphen up to the type/return type specification).
-    - **Enums, Structs:** Enclose only the element name part (the `{English Hub Name}::{Native Name}` or `{English Name}` immediately after the hyphen).
-  - Descriptions or value lists are written outside the backticks, preceded by a colon `:` and a space (if required).
+    - **Properties, Methods, Events:** Enclose the main part of the definition (from immediately after the hyphen up to the type/return type specification) **only**.
+    - **Enums, Structs:** Enclose only the element name part (the `{English Hub Name}::{Native Name}` or `{English Name}` **only**).
+      - Start: After a hyphen (`-`) and a single space. Right before the element definition.
+      - End: Right after the element definition, before the colon (`:`), and a space. Do not enclose the colon and description in backticks.
+      - The value list of enums are not enclosed in backticks.
 - **Property Definition:**
   - Format (Native): `- `{English Hub Name}::{Native Name}: {TypeName}`: {Description}`
   - Format (English): `- `{English Name}: {TypeName}`: {Description}`

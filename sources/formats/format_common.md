@@ -29,6 +29,8 @@ This document (`format_common.md`) defines the **common basic principles and des
   - Example (English): `**Properties:**`, `**Methods:**`, `**Events:**`
 
 - **Lists:** Use bulleted lists (`-`) to define properties, methods, events, enum definitions, struct class definitions, etc.
+  - List elements must start with a single hyphen (`-`) followed by exactly one space.
+  - Caution: Do not use other Markdown list symbols (e.g., `*`, `+`). These are considered violations of the OOPD format.
 
 - **Code Blocks (`---`):** When embedding code examples or data examples (YAML, JSON, etc.) within the document, enclose them with three hyphens (`---`). This is for the AI to distinguish them from the code block (\`\`\`) that might enclose the entire `Definition Format`.
 

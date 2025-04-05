@@ -236,12 +236,12 @@ def main():
     overall_success = True
 
     # version.txtから新しいバージョン番号を読み取る
+    new_version = None
     try:
         with open("version.txt", "r") as f:
             new_version = f.read().strip()
     except FileNotFoundError:
-        print("Error: version.txt not found.", file=sys.stderr)
-        sys.exit(1)
+        print("Warning: version.txt not found. Skipping version replacement.", file=sys.stderr)
 
     # for development
     # ファイルコピーを実行
@@ -258,10 +258,11 @@ def main():
         input_configs = [(fname, use_codeblock) for fname, use_codeblock in config[:-1]]
 
         # ファイル内のバージョン番号を置換
-        for fname, _ in input_configs:
-            file_path = WORKSPACE_PATH / fname
-            if file_path.suffix.lower() == ".md":
-                replace_version_in_file(file_path, new_version)
+        if new_version:
+            for fname, _ in input_configs:
+                file_path = WORKSPACE_PATH / fname
+                if file_path.suffix.lower() == ".md":
+                    replace_version_in_file(file_path, new_version)
 
         if not merge_files(input_configs, output_filename, WORKSPACE_PATH):
             overall_success = False

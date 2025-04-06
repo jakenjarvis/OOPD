@@ -89,8 +89,8 @@
   - **プロパティ:** - \`propertyName: Type\`: Description (オプションの場合 `, Optional` を追加。`Optional` は `basic_terms.md` 参照)
   - **メソッド:** - \`methodName(argName: Type = defaultValue): ReturnType\`: Description (戻り値が `Void` の場合は省略非推奨)
   - **イベント:** - \`eventName(argName: Type)\`: Description (戻り値が `Void` の場合は省略推奨、引数なしでも `()` は必須)
-  - **列挙型:** - \`EnumName\`: VALUE_ONE, VALUE_TWO  (リスト形式、`#### Enum Definitions` 下に記述)
-  - **構造体クラス:** - \`StructName\`: Description  (リスト形式、`#### Structure Definitions` 下に記述)
+  - **列挙型:** - \`EnumName = VALUE_ONE, VALUE_TWO, ...\` [: Description] (リスト形式、`#### Enum Definitions` 下に記述。区切りは `=`、バッククォートは値リストまで)
+  - **構造体クラス:** - \`StructName\`: Description (リスト形式、`#### Structure Definitions` 下に記述)
 - **基底クラス/インターフェース実装:**
   - クラス定義内で、対応する基本用語 (**`basic_terms.md`** 参照) をボールド表記で使用します。
   - **継承:** `**baseclass:** BaseClassName`

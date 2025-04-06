@@ -58,7 +58,7 @@
 - **列挙型の値 (Enum Members):**
   - **形式:** すべて大文字の `SNAKE_CASE`。単語間をアンダースコア (`_`) で区切ります。
   - **例:** `NOT_STARTED`, `IN_PROGRESS`, `COMPLETED`, `LOW`, `MEDIUM`, `HIGH`, `READ_ONLY`
-- **構造体クラス名 (Struct Class Names):**
+- **構造体名 (Struct Names):**
   - **形式:** `PascalCase`。クラス名と同様。
   - **例:** `Appearance`, `Coordinate`
 - **定数名 (Constant Names) (参考):**
@@ -84,13 +84,13 @@
     - 見出し下に詳細説明を記述可能。
   - **グループ見出し:** `#### Structure Definitions` または `#### Enum Definitions` を使用します。これらは **`basic_terms.md`** で定義された固定の英語名です。
     - 見出し下に詳細説明を記述可能。
-- **リスト形式要素 (`-`):** プロパティ、メソッド、イベント、列挙型、構造体クラスを定義します。
+- **リスト形式要素 (`-`):** プロパティ、メソッド、イベント、列挙型、構造体を定義します。
   - **リスト開始キーワード:** リストを開始する際は、**`basic_terms.md`** で定義された基本用語 (`Property`, `Method`, `Event`) をボールド表記で使用します (例: `**Property:**`, `**Method:**`, `**Event:**`)。
   - **プロパティ:** - \`propertyName: Type\`: Description (オプションの場合 `, Optional` を追加。`Optional` は `basic_terms.md` 参照)
   - **メソッド:** - \`methodName(argName: Type = defaultValue): ReturnType\`: Description (戻り値が `Void` の場合は省略非推奨)
   - **イベント:** - \`eventName(argName: Type)\`: Description (戻り値が `Void` の場合は省略推奨、引数なしでも `()` は必須)
   - **列挙型:** - \`EnumName = VALUE_ONE, VALUE_TWO, ...\` [: Description] (リスト形式、`#### Enum Definitions` 下に記述。区切りは `=`、バッククォートは値リストまで)
-  - **構造体クラス:** - \`StructName\`: Description (リスト形式、`#### Structure Definitions` 下に記述)
+  - **構造体:** - \`StructName\`: Description (リスト形式、`#### Structure Definitions` 下に記述)
 - **基底クラス/インターフェース実装:**
   - クラス定義内で、対応する基本用語 (**`basic_terms.md`** 参照) をボールド表記で使用します。
   - **継承:** `**baseclass:** BaseClassName`

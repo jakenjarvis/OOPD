@@ -45,7 +45,7 @@
       このクラスは、システムの中心となる顧客データを扱います。
       ...
 
-      **AIへの指示:** 個人情報保護法に準拠すること。
+      個人情報保護法に準拠すること。
       ~~~
 
       ~~~markdown
@@ -55,7 +55,7 @@
       This class handles core customer data.
       ...
 
-      **AI Instructions:** Comply with privacy regulations.
+      Comply with privacy regulations.
       ~~~
 
     *(`Class`, `Interface` の基本用語定義は `basic_terms.md` 参照)*
@@ -104,7 +104,7 @@
         (説明例: 以下のようなMarkdownも使用できます)
         このプロパティは〇〇を表します。
         初期値はXXXです。
-        **AIへの指示:** 値がNullの場合はデフォルト値を使用してください。
+        値がNullの場合はデフォルト値を使用してください。
 
       **メソッド:**
       - `methodName1::メソッド名1(引数: Type): ReturnType`: 説明...（１行で書ききってもよい）

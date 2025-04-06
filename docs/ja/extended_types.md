@@ -2,15 +2,17 @@
 
 ### 拡張型とは
 
-このドキュメントは、Object-Oriented Prompt Design (OOPD) における**拡張型 (Extended Types)** を定義します。拡張型は、OOPDのコアとなる**標準型 (Standard Types)** を補完し、特定のドメインや利用シーンにおいてプロンプトの意図をより明確にし、AIとのコミュニケーションを円滑にすることを目的とした、意味的・具体的な型です。
+このドキュメントは、Object-Oriented Prompt Design (OOPD) における**拡張型 (Extended Types)** を定義します。拡張型は、OOPDのコアとなる**標準型 (Standard Types)**（**`basic_terms.md`** で定義）を補完し、特定のドメインや利用シーンにおいてプロンプトの意図をより明確にし、AIとのコミュニケーションを円滑にすることを目的とした、意味的・具体的な型です。
 
-標準型（`String`, `Number`, `Boolean` など）の定義については `core.md` を参照してください。
+標準型の定義については `basic_terms.md` を参照してください。
 
-拡張型の使用は**オプション**ですが、これらを利用することで、より表現豊かで構造化されたプロンプト設計が可能になります。拡張型も標準型と同様に、**プロンプトの記述言語に関わらず、定義された英語表記で記述**します。
+拡張型の使用は**オプション**ですが、これらを利用することで、より表現豊かで構造化されたプロンプト設計が可能になります。
+
+**【重要】** 拡張型も標準型と同様に、**基本用語**として扱われます。つまり、プロンプトの記述言語に関わらず、**必ずここで定義された英語表記 (`ContentString`, `Persona` など) で記述**し、**翻訳されません**。
 
 ### 拡張型リスト (一覧)
 
-AIがこれらの拡張型名を固定キーワードとして認識するために、以下のリストを定義します。
+AIがこれらの拡張型名を **基本用語（常に英語表記で使用される固定キーワード）**として認識するために、以下のリストを定義します。
 
 ~~~json
 {
@@ -36,8 +38,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
 - **実体/表現 (Underlying Representation/Format):**
   - `String`。
   - Markdown形式など、構造化されたテキストを含むこともあります。
-- **関連する標準型 (Related Standard Types):**
-  - `String`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`)
 
 #### `Instruction`
 
@@ -49,8 +51,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - プロンプト自体をデータとして扱い、分析・生成するようなメタプロンプティング。
 - **実体/表現 (Underlying Representation/Format):**
   - `String`。自然言語による指示文。
-- **関連する標準型 (Related Standard Types):**
-  - `String`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`)
 
 #### `Persona`
 
@@ -62,8 +64,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - キャラクター対話やロールプレイングシナリオの定義。
 - **実体/表現 (Underlying Representation/Format):**
   - `String`（ペルソナを説明するテキスト）または `Dictionary`（名前、性格、口調などの属性を構造化）。
-- **関連する標準型 (Related Standard Types):**
-  - `String`, `Dictionary`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String`, `Dictionary` (from `basic_terms.md`)
 
 #### `OutputStyle`
 
@@ -77,8 +79,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
 - **実体/表現 (Underlying Representation/Format):**
   - `Dictionary`（`format: String`, `tone: String`, `length: Number` のような属性を持つ）。
   - または、単純な `String`（例: "JSON形式で、丁寧な口調で"）。
-- **関連する標準型 (Related Standard Types):**
-  - `Dictionary`, `String`, `Number`
+- **関連する基本用語 (Related Basic Terms):**
+  - `Dictionary`, `String`, `Number` (from `basic_terms.md`)
 
 #### `CodeBlock`
 
@@ -91,8 +93,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
 - **実体/表現 (Underlying Representation/Format):**
   - `String`（コードそのもの）。
   - 言語を指定する属性（例: `language: String`）を持つ `Dictionary` としても表現可能。
-- **関連する標準型 (Related Standard Types):**
-  - `String`, `Dictionary`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String`, `Dictionary` (from `basic_terms.md`)
 
 #### `Ref`
 
@@ -106,8 +108,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - データベースのレコードIDなど、他のデータへの参照を示す。
 - **実体/表現 (Underlying Representation/Format):**
   - `String`。URL, ファイルパス, URN, データURIなど様々な形式の文字列。
-- **関連する標準型 (Related Standard Types):**
-  - `String`, `UniqueID` (参照先がIDの場合)
+- **関連する基本用語 (Related Basic Terms):**
+  - `String`, `UniqueID` (from `basic_terms.md`)
 
 #### `SchemaDefinition`
 
@@ -120,8 +122,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
 - **実体/表現 (Underlying Representation/Format):**
   - `String`（スキーマ定義をテキストで記述したもの）。
   - `JsonString` や `YamlString` で表現されることも多い。
-- **関連する標準型 (Related Standard Types):**
-  - `String`, `JsonString`, `YamlString`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`), `JsonString`, `YamlString` (defined in this file)
 
 #### `JsonString`
 
@@ -133,8 +135,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - APIリクエスト/レスポンスのボディ部分など。
 - **実体/表現 (Underlying Representation/Format):**
   - `String` (JSON形式に準拠した文字列)。
-- **関連する標準型 (Related Standard Types):**
-  - `String`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`)
 
 #### `YamlString`
 
@@ -146,8 +148,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - OOPDのインスタンスデータ表現など。
 - **実体/表現 (Underlying Representation/Format):**
   - `String` (YAML形式に準拠した文字列)。
-- **関連する標準型 (Related Standard Types):**
-  - `String`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`)
 
 #### `XmlString`
 
@@ -158,8 +160,8 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - 設定ファイル、データ交換（SOAPなど）、マークアップ文書を扱うことを明示する。
 - **実体/表現 (Underlying Representation/Format):**
   - `String` (XML/HTML形式に準拠した文字列)。
-- **関連する標準型 (Related Standard Types):**
-  - `String`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`)
 
 #### `Color`
 
@@ -171,5 +173,5 @@ AI向け注記: 拡張型の『実体/表現』における複数形式の記述
   - テキストの装飾（文字色、背景色）の指示。
 - **実体/表現 (Underlying Representation/Format):**
   - `String` (推奨)。HEX (`#RRGGBB`, `#RGB`), RGB (`rgb(r,g,b)`), HSL (`hsl(h,s,l)`), 色名 (`red`, `blue`) など、CSS等で一般的に使われる形式を想定。
-- **関連する標準型 (Related Standard Types):**
-  - `String`
+- **関連する基本用語 (Related Basic Terms):**
+  - `String` (from `basic_terms.md`)

@@ -4,7 +4,7 @@
 
 このドキュメントは、Object-Oriented Prompt Design (OOPD) において、**英語 (`en`)** でプロンプトを記述し、AIがそれを解釈・応答する際の**仕様とガイドライン**を定義します。英語はOOPDの**ハブ言語**であり、他の言語との翻訳の基準となるため、その仕様は特に重要です。
 
-他の言語に共通する基本原則や記述ルールについては `core.md` および `format_common.md` を参照してください。
+他の言語に共通する基本原則や記述ルールについては `core.md`, `format_common.md`, **`basic_terms.md`** を参照してください。
 
 #### 基本原則
 
@@ -13,6 +13,7 @@
 - **ハブ言語:** 英語 (`en`) はOOPDのハブ言語です。全ての翻訳用語は内部的に英語ハブ名に紐付けられます。
 - **単一フォーマット（定義フォーマットのみ適用）:** 英語でOOPD形式を記述する場合、他の言語のような「ユーザーフォーマット」と「定義フォーマット」の**概念的な区別は存在せず、常に `format_definition.md` で定義される規則に準拠した記述** を行います。このため、`format_user.md` で記述される緩やかなルール（例: 命名規則の逸脱許容や提案のみの対応）は **英語には適用されません**。
   - つまり、モジュール定義 (`##`) が必須です。
+  - **【重要】配置制約:** クラス定義、インターフェース定義、グループ見出し (`#### Structure Definitions`, `#### Enum Definitions`) などの主要な定義要素は、**必ずモジュール定義 (`##`) よりも下の階層 (`###` 以下) に記述する必要があります。**
   - 定義される要素（クラス、メソッド等）は、後述する **英語命名規則に厳密に従う** 必要があります。命名規則に違反した場合、AIはその違反を指摘し、標準的な英語名をユーザーに **通知した上で自動的に適用** します。ユーザーがその名称を修正しない限り、AIは標準名を内部的に使用し続けます。
 - **フォーマット確認のスキップ:** 上記の「単一フォーマット」原則に基づき、AIは英語での対話開始時に `interaction_mode_selection.md` で定義されるフォーマット確認手順を **実行しません**。
 - **翻訳処理なし:** 入力プロンプトが英語で、出力も英語が指定されている場合、ハブ言語との間の翻訳処理は発生しません。AIは英語の定義を直接解釈し、英語で応答します。
@@ -69,7 +70,7 @@
 
 #### 型とリテラルの表記
 
-`core.md` で定義された標準型、拡張型、およびリテラルは、常にその**英語表記**で使用します。
+`basic_terms.md` で定義された標準型、リテラル、および `extended_types.md` で定義された拡張型は、常にその**英語表記**で使用します。
 
 - **型例:** `String`, `Number`, `Boolean`, `List<String>`, `Dictionary<String, Any>`, `UniqueID`, `Instant`, `Void`, `Any`, `ContentString`, `Persona`, `CodeBlock`, `Ref`, `Color`, etc.
 - **リテラル例:** `True`, `False`, `Null`
@@ -77,16 +78,23 @@
 #### 構造と参照
 
 - **モジュール (`##`):** 全ての定義はモジュール内に記述します。
-- **セクション (`###` 以下):** 文書構造の整理のために任意で使用できます。参照パスには影響しません。
-- **クラス、インターフェース、列挙型、構造体クラス (`####`):** モジュール内で名前が一意になるように定義します。
-  - 書式: `#### ClassName: Description` または `#### InterfaceName: Description` (簡易説明文必須)
-  - 見出し下に詳細説明を記述可能。
+- **セクション (`###` など):** 文書構造の整理のために任意で使用できます。参照パスには影響しません。
+- **見出し (`####`):**
+  - **個別クラス/インターフェース:** `#### ClassName: Description` または `#### InterfaceName: Description` (簡易説明文必須) の形式。
+    - 見出し下に詳細説明を記述可能。
+  - **グループ見出し:** `#### Structure Definitions` または `#### Enum Definitions` を使用します。これらは **`basic_terms.md`** で定義された固定の英語名です。
+    - 見出し下に詳細説明を記述可能。
 - **リスト形式要素 (`-`):** プロパティ、メソッド、イベント、列挙型、構造体クラスを定義します。
-  - **プロパティ:** `- `propertyName: Type`: Description` (オプションの場合 `, Optional` を追加)
-  - **メソッド:** `- `methodName(argName: Type = defaultValue): ReturnType`: Description` (戻り値が `Void` の場合は省略非推奨)
-  - **イベント:** `- `eventName(argName: Type)`: Description` (戻り値が `Void` の場合は省略推奨)
-  - **列挙型:** `- `EnumName`: VALUE_ONE, VALUE_TWO` (バッククォートは `EnumName` のみ)
-  - **構造体クラス:** `- `StructName`: Description` (バッククォートは `StructName` のみ)
+  - **リスト開始キーワード:** リストを開始する際は、**`basic_terms.md`** で定義された基本用語 (`Property`, `Method`, `Event`) をボールド表記で使用します (例: `**Property:**`, `**Method:**`, `**Event:**`)。
+  - **プロパティ:** - \`propertyName: Type\`: Description (オプションの場合 `, Optional` を追加。`Optional` は `basic_terms.md` 参照)
+  - **メソッド:** - \`methodName(argName: Type = defaultValue): ReturnType\`: Description (戻り値が `Void` の場合は省略非推奨)
+  - **イベント:** - \`eventName(argName: Type)\`: Description (戻り値が `Void` の場合は省略推奨、引数なしでも `()` は必須)
+  - **列挙型:** - \`EnumName\`: VALUE_ONE, VALUE_TWO  (リスト形式、`#### Enum Definitions` 下に記述)
+  - **構造体クラス:** - \`StructName\`: Description  (リスト形式、`#### Structure Definitions` 下に記述)
+- **基底クラス/インターフェース実装:**
+  - クラス定義内で、対応する基本用語 (**`basic_terms.md`** 参照) をボールド表記で使用します。
+  - **継承:** `**baseclass:** BaseClassName`
+  - **インターフェース実装:** `**Interface:** InterfaceName1, InterfaceName2, ...`
 - **クロスモジュール参照:** 他のモジュールの定義を参照する場合は、必ず完全修飾名 (`module.name.ClassName`) を使用します。
 
 #### AIへの指示

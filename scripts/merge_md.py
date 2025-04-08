@@ -57,47 +57,56 @@ MERGE_CONFIG: List[Tuple[str, bool, ...]] = [
     (
         # for development
         ("README.md", True),
+        ("docs/ja/initial_instructions/initial_instructions.md", True),
+        ("docs/ja/initial_instructions/language_specification_ja.md", False),
         ("docs/ja/core.md", True),
         ("docs/ja/extended_types.md", True),
+        ("docs/ja/basic_terms.md", True),
+        ("docs/ja/localization_overview.md", True),
         ("docs/ja/english_specification.md", True),
+        ("docs/ja/translation_rules/README.md", True),
+        ("docs/ja/translation_rules/ja_rules.md", True),
+        ("docs/ja/interaction_mode_selection.md", True),
         ("docs/ja/formats/format_common.md", True),
         ("docs/ja/formats/format_definition.md", True),
         ("docs/ja/formats/format_user.md", True),
-        ("docs/ja/localization_overview.md", True),
-        ("docs/ja/translation_rules/README.md", True),
-        ("docs/ja/translation_rules/ja_rules.md", True),
-        ("docs/ja/initial_instructions/initial_instructions.md", True),
-        ("docs/ja/initial_instructions/language_specification_ja.md", False),
+        ("docs/ja/initial_instructions/language_specification_ja.md", True),
 
         "output/docs/ja/system_instructions_consolidated.md"
     ),
     (
         # for common consolidated
-        ("README.md", True),
         ("sources/core.md", True),
         ("sources/extended_types.md", True),
+        ("sources/basic_terms.md", True),
+        ("sources/localization_overview.md", True),
         ("sources/english_specification.md", True),
+        ("sources/translation_rules/README.md", True),
+        ("sources/translation_rules/ja_rules.md", True),
+        ("sources/interaction_mode_selection.md", True),
         ("sources/formats/format_common.md", True),
         ("sources/formats/format_definition.md", True),
         ("sources/formats/format_user.md", True),
-        ("sources/localization_overview.md", True),
-        ("sources/translation_rules/README.md", True),
-        ("sources/translation_rules/ja_rules.md", True),
-        ("sources/initial_instructions/initial_instructions.md", True),
 
         "instructions/system_instructions_consolidated.md"
     ),
     (
         # for en
-        ("instructions/system_instructions_consolidated.md", False),
+        ("README.md", True),
+        ("sources/initial_instructions/initial_instructions.md", True),
         ("sources/initial_instructions/language_specification_en.md", False),
+        ("instructions/system_instructions_consolidated.md", False),
+        ("sources/initial_instructions/language_specification_en.md", True),
 
         "instructions/system_instructions_en.md"
     ),
     (
         # for ja
-        ("instructions/system_instructions_consolidated.md", False),
+        ("README.md", True),
+        ("sources/initial_instructions/initial_instructions.md", True),
         ("sources/initial_instructions/language_specification_ja.md", False),
+        ("instructions/system_instructions_consolidated.md", False),
+        ("sources/initial_instructions/language_specification_ja.md", True),
 
         "instructions/system_instructions_ja.md"
     )

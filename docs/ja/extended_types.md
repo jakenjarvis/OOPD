@@ -14,11 +14,11 @@
 
 AIがこれらの拡張型名を **基本用語（常に英語表記で使用される固定キーワード）**として認識するために、以下のリストを定義します。
 
-~~~json
+```json
 {
   "ExtendedTypes": ["ContentString", "Instruction", "Persona", "OutputStyle", "CodeBlock", "Ref", "SchemaDefinition", "JsonString", "YamlString", "XmlString", "Color"]
 }
-~~~
+```
 
 ### 各拡張型の詳細
 

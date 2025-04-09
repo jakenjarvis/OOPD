@@ -31,9 +31,6 @@ jobs:
           chmod +x scripts/*.sh
           ./scripts/increment_version.sh
 
-      - name: Set tag
-        run: ./scripts/set_tag.sh
-
       - name: Merge Markdown files
         run: python ./scripts/merge_md.py
 
@@ -41,13 +38,18 @@ jobs:
         id: commit_push
         run: |
           if [[ -n $(git status --porcelain) ]]; then
+            VERSION=$(cat version.txt)
             git add .
-            git commit -m "Update system instructions and version"
+            git commit -m "Release version ${VERSION}"
             echo "committed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No changes to commit."
             echo "committed=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Set tag on the new commit
+        if: steps.commit_push.outputs.committed == 'true'
+        run: ./scripts/set_tag.sh
 
       - name: Push changes and tags
         if: steps.commit_push.outputs.committed == 'true'

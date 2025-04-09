@@ -211,7 +211,7 @@ def merge_files(
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         # --- ファイルの書き込み ---
-        with output_path.open("w", encoding="utf-8") as outfile:
+        with output_path.open("w", encoding="utf-8", newline='\n') as outfile:
             all_written_successfully = True
             for i, (infile_path, use_codeblock) in enumerate(zip(input_paths, [use_codeblock for _, use_codeblock in input_configs])):
                 # ファイル内容をコードブロックで書き込む

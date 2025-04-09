@@ -2,15 +2,17 @@
 
 ### What are Extended Types?
 
-This document defines the **Extended Types** in Object-Oriented Prompt Design (OOPD). Extended Types complement the core **Standard Types** of OOPD and are semantic, concrete types aimed at clarifying the intent of prompts in specific domains or usage scenarios, facilitating smoother communication with the AI.
+This document defines **Extended Types** in Object-Oriented Prompt Design (OOPD). Extended Types complement the core **Standard Types** (defined in **`basic_terms.md`**) and are semantic, concrete types intended to clarify the intent of prompts in specific domains or usage scenarios, facilitating smoother communication with the AI.
 
-Refer to `core.md` for the definitions of Standard Types (`String`, `Number`, `Boolean`, etc.).
+Refer to `basic_terms.md` for the definitions of Standard Types.
 
-The use of Extended Types is **optional**, but leveraging them enables more expressive and structured prompt design. Like Standard Types, Extended Types are **described using their defined English notation, regardless of the prompt description language**.
+The use of Extended Types is **optional**, but utilizing them enables more expressive and structured prompt design.
+
+**【Important】** Like Standard Types, Extended Types are treated as **Basic Terms**. This means that regardless of the prompt's description language, they **must always be described using the English notation defined here (`ContentString`, `Persona`, etc.)** and are **not translated**.
 
 ### Extended Type List
 
-The following list defines the extended type names for the AI to recognize as fixed keywords.
+To ensure the AI recognizes these extended type names as **Basic Terms (fixed keywords always used in English notation)**, the following list is defined.
 
 ```json
 {
@@ -18,160 +20,158 @@ The following list defines the extended type names for the AI to recognize as fi
 }
 ```
 
-### Regarding the Underlying Representation/Format of Extended Types
-
-For some Extended Types, the "Underlying Representation/Format" described later indicates multiple forms (e.g., String or Dictionary). This primarily shows flexibility for the AI's internal handling. Users typically just need to describe the intended content for that Extended Type naturally within the prompt (e.g., a description for Persona, instructions regarding output format or tone for OutputStyle), and the AI will select and interpret the appropriate internal representation based on context. It is also possible for users to explicitly describe them in a specific format (e.g., Dictionary).
-
 ### Details of Each Extended Type
 
-Below are the details for each defined Extended Type.
+Below are the details for each defined extended type.
+
+Note for AI: The description of multiple formats in the 'Underlying Representation/Format' for extended types indicates flexibility in the AI's internal interpretation. The AI should understand the content according to the meaning of the extended type and reflect it in processing, whether the user describes it in natural language or in a form suggesting structured data.
 
 #### `ContentString`
 
 - **Meaning:**
-  Represents the primary long-form text content. Intended to indicate the central text block for AI processing or generation, such as articles, reports, email bodies, or stories.
+  Represents the central text block that the AI processes or generates, such as the main body of an article, report content, email body, or story text. Used to specify text as content, distinct from other metadata (like instructions or personas).
 - **Use Cases:**
-  - Specifying the target for summarizing or translating articles or documents.
-  - Specifying the body section of reports or emails.
-  - Specifying the main part of creative works like stories or poems.
-  - Distinguishing pure content text from code (`CodeBlock`) or instructions (`Instruction`).
+  - Specifying the target for summarization/translation of articles or documents.
+  - Specifying the body part of reports or emails.
+  - Specifying the main body part of creative works like stories or poems.
+  - When wanting to indicate pure content text, distinct from code (`CodeBlock`) or instructions (`Instruction`).
 - **Underlying Representation/Format:**
   - `String`.
-  - May include structured text, such as Markdown format.
-- **Related Standard Types:**
-  - `String`
+  - May also contain structured text, such as Markdown format.
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`)
 
 #### `Instruction`
 
 - **Meaning:**
-  Represents specific instructions, commands, or task descriptions for the AI. Clearly indicates the action the AI should perform, distinct from other parts of the prompt (data or context).
+  Represents specific instructions, commands, or task details described in natural language for the AI to execute. A type for clearly indicating action requests to the AI, distinct from other information (like data or context) within the prompt. Describes content that prompts specific actions, not just explanations.
 - **Use Cases:**
-  - Structurally indicating the instruction part for the AI within complex prompts.
-  - Defining multiple instruction steps for sequential execution.
-  - Metaprompting, where the prompt itself is treated as data for analysis or generation.
+  - When wanting to structurally indicate the instruction part for the AI within complex prompts.
+  - When defining multiple instruction steps to be executed sequentially.
+  - Meta-prompting, such as treating the prompt itself as data for analysis or generation.
 - **Underlying Representation/Format:**
   - `String`. Instruction text in natural language.
-- **Related Standard Types:**
-  - `String`
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`)
 
 #### `Persona`
 
 - **Meaning:**
-  Represents the persona settings for the role, character, expert, etc., that the AI should embody. Defines the AI's response style, tone, knowledge level, thinking style, etc.
+  Represents the specific role, character image, or expert stance persona setting that the AI is intended to embody. This includes the AI's response style (e.g., 'formal', 'friendly'), tone of voice (e.g., 'polite language', 'assertive tone'), assumed knowledge level (e.g., 'beginner-friendly', 'expert level'), thinking style (e.g., 'logical', 'creative'), or even a specific background (e.g., '18th-century philosopher'). Defining these elements descriptively specifies the AI's behavior.
 - **Use Cases:**
-  - Having the AI respond as a specific role (e.g., "a seasoned editor," "a friendly assistant," "a specific historical figure").
-  - Controlling the tone and expertise of the response.
+  - Making the AI respond as a specific role (e.g., "skilled editor," "friendly assistant," "specific historical figure").
+  - Controlling the tone and expertise level of responses.
   - Defining character dialogues or role-playing scenarios.
 - **Underlying Representation/Format:**
   - `String` (text describing the persona) or `Dictionary` (structured attributes like name, personality, tone).
-- **Related Standard Types:**
-  - `String`, `Dictionary`
+- **Related Basic Terms:**
+  - `String`, `Dictionary` (from `basic_terms.md`)
 
 #### `OutputStyle`
 
 - **Meaning:**
-  A composite type for specifying the format, style, tone, etc., of the output generated by the AI. Conveys how the response should be formatted.
+  Represents composite information for specifying the format, appearance, writing style, tone, etc., of the final output generated by the AI. Describes requirements related to response formatting or style, such as "Use Markdown bullet points," "Output in JSON format," "Use polite language with an empathetic tone," or "Summarize to approximately 500 characters."
 - **Use Cases:**
-  - Specifying the output format (e.g., Markdown, JSON, bullet points).
-  - Specifying the writing style (e.g., formal, casual, academic).
-  - Specifying the tone (e.g., polite, empathetic, assertive).
+  - Specifying output format (e.g., Markdown, JSON, bullet points).
+  - Specifying writing style (e.g., formal, casual, academic).
+  - Specifying tone (e.g., polite, empathetic, assertive).
   - Specifying constraints like character limits or summarization levels.
 - **Underlying Representation/Format:**
   - `Dictionary` (with attributes like `format: String`, `tone: String`, `length: Number`).
-  - Or, a simple `String` (e.g., "In JSON format, with a polite tone").
-- **Related Standard Types:**
-  - `Dictionary`, `String`, `Number`
+  - Or, a simple `String` (e.g., "JSON format, polite tone").
+- **Related Basic Terms:**
+  - `Dictionary`, `String`, `Number` (from `basic_terms.md`)
 
 #### `CodeBlock`
 
 - **Meaning:**
-  Represents a snippet of code written in a specific programming language. Expected to have the language type as an attribute.
+  Represents a snippet of code itself written in a specific programming language. Used to specify the target code when requesting the AI to generate, explain, review, or debug code, or to provide code examples as reference. Co-notating the language type (e.g., 'Python', 'JavaScript') is recommended but not required.
 - **Use Cases:**
   - Specifying the target for instructions like code generation, explanation, review, debugging, or translation.
   - Embedding sample or reference code within the prompt.
-  - Clearly distinguishing code parts from text parts.
+  - Clearly distinguishing between text parts and code parts.
 - **Underlying Representation/Format:**
   - `String` (the code itself).
   - Can also be represented as a `Dictionary` with an attribute specifying the language (e.g., `language: String`).
-- **Related Standard Types:**
-  - `String`, `Dictionary`
+- **Related Basic Terms:**
+  - `String`, `Dictionary` (from `basic_terms.md`)
 
 #### `Ref`
 
 - **Meaning:**
-  Information indicating a reference or location of some resource (web page, file, API endpoint, data, image, audio, video, etc.). Similar to the concept of a URI (Uniform Resource Identifier).
+  Represents an identifier indicating reference information or location to external resources or other data. Specifically, this includes web page URLs, file system paths, API endpoints, database record IDs, or links to image or video files. Used as the reference target when the AI accesses these resources or refers to them.
 - **Use Cases:**
-  - Specifying a web page URL.
-  - Specifying a local or remote file path.
-  - Specifying an API endpoint.
-  - Specifying links or identifiers for image, audio, or video files.
+  - Specifying web page URLs.
+  - Specifying local or remote file paths.
+  - Specifying API endpoints.
+  - Specifying links or identifiers to images, audio, or video files.
   - Indicating references to other data, such as database record IDs.
 - **Underlying Representation/Format:**
-  - `String`. Various formats of strings like URL, file path, URN, data URI, etc.
-- **Related Standard Types:**
-  - `String`, `UniqueID` (if the reference target is an ID)
+  - `String`. Various formats of strings like URL, file path, URN, data URI.
+- **Related Basic Terms:**
+  - `String`, `UniqueID` (from `basic_terms.md`)
 
 #### `SchemaDefinition`
 
 - **Meaning:**
-  Represents data structure definitions, schemas, data models, etc. Examples include JSON Schema, class definitions, or database schemas.
+  Represents a data structure definition, schema, or data model itself described in text format. Examples include JSON Schema definitions, database table definitions (like CREATE TABLE statements), or class structure definitions. Used when instructing the AI to generate data based on a specific structure or to analyze/explain the data structure itself.
 - **Use Cases:**
   - Instructing data generation based on a specific schema.
   - Requesting the AI to define or explain a data structure.
   - Specifying data validation rules.
 - **Underlying Representation/Format:**
-  - `String` (the schema definition written as text).
-  - Often represented using `JsonString` or `YamlString`.
-- **Related Standard Types:**
-  - `String`, `JsonString`, `YamlString`
+  - `String` (the schema definition described in text).
+  - Often represented by `JsonString` or `YamlString`.
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`), `JsonString`, `YamlString` (defined in this file)
 
 #### `JsonString`
 
 - **Meaning:**
-  A string representing data described in JSON (JavaScript Object Notation) format.
+  Represents a string conforming to the JSON (JavaScript Object Notation) format. Indicates that it holds a valid JSON data structure (starting with an object {} or array \[]) as a string value. Used when wanting to directly handle structured data like API response data or configuration information in JSON format.
 - **Use Cases:**
   - Instructing parsing, generation, or transformation of JSON data.
   - Explicitly indicating that structured data should be input/output in JSON format.
-  - API request/response body parts, etc.
+  - Body part of API requests/responses, etc.
 - **Underlying Representation/Format:**
-  - `String` (a string conforming to the JSON format).
-- **Related Standard Types:**
-  - `String`
+  - `String` (a string conforming to JSON format).
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`)
 
 #### `YamlString`
 
 - **Meaning:**
-  A string representing data described in YAML (YAML Ain't Markup Language) format.
+  Represents a string conforming to the YAML (YAML Ain't Markup Language) format. Indicates that it holds a valid YAML data structure as a string value. Used when wanting to directly handle configuration file content or human-readable structured data in YAML format.
 - **Use Cases:**
   - Instructing parsing, generation, or transformation of YAML data.
   - Explicitly indicating that configuration files or structured data should be handled in YAML format.
-  - Representing instance data in OOPD, etc.
+  - OOPD instance data representation, etc.
 - **Underlying Representation/Format:**
-  - `String` (a string conforming to the YAML format).
-- **Related Standard Types:**
-  - `String`
+  - `String` (a string conforming to YAML format).
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`)
 
 #### `XmlString`
 
 - **Meaning:**
-  A string representing data described in XML (Extensible Markup Language) format. Can also be used for representing HTML or XHTML.
+  Represents a string conforming to the XML (Extensible Markup Language) format or HTML (HyperText Markup Language) format. Indicates that it holds a valid XML/HTML markup structure as a string value. Used when wanting to directly handle XML data snippets, configuration files, or HTML content.
 - **Use Cases:**
   - Instructing parsing, generation, or transformation of XML/HTML data.
-  - Explicitly indicating handling of configuration files, data exchange (like SOAP), or markup documents.
+  - Explicitly indicating the handling of configuration files, data exchange (like SOAP), or markup documents.
 - **Underlying Representation/Format:**
-  - `String` (a string conforming to the XML/HTML format).
-- **Related Standard Types:**
-  - `String`
+  - `String` (a string conforming to XML/HTML format).
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`)
 
 #### `Color`
 
 - **Meaning:**
-  A value representing color.
+  Specifies a color value as a string. Assumes description in formats commonly recognized in CSS etc. (e.g., color name 'red', HEX value '#FF0000', RGB value 'rgb(255, 0, 0)', HSL value 'hsl(0, 100%, 50%)'). Used for UI color specification or color instructions during image generation, etc.
 - **Use Cases:**
   - UI design, data visualization, image generation instructions.
-  - Setting colors in simulation environments (sky color, object color, etc.).
+  - Color settings in simulation environments (sky color, object color, etc.).
   - Instructions for text decoration (text color, background color).
 - **Underlying Representation/Format:**
-  - `String` (Recommended). Assumes commonly used formats in CSS, etc., like HEX (`#RRGGBB`, `#RGB`), RGB (`rgb(r,g,b)`), HSL (`hsl(h,s,l)`), color names (`red`, `blue`).
-- **Related Standard Types:**
-  - `String`
+  - `String` (Recommended). Assumes commonly used formats like HEX (`#RRGGBB`, `#RGB`), RGB (`rgb(r,g,b)`), HSL (`hsl(h,s,l)`), color names (`red`, `blue`), etc., as used in CSS.
+- **Related Basic Terms:**
+  - `String` (from `basic_terms.md`)

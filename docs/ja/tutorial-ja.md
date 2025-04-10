@@ -43,7 +43,7 @@ OOPDには主に2つの記述フォーマットが存在します。
    ログイン後、左の「Chat」を選び、新しいプロンプトを作成できる状態にします。
 3. **System Instructionsの設定（重要）:**
    OOPDのルールをAIに正確に認識させるため、**System Instruction**欄にOOPDの基本指示を設定します。これは、AIに対する基本的な前提知識や動作ルールを伝えるための重要なステップです。
-   - **指示内容の取得:** OOPDの公式GitHubリポジトリにある [instructions/system_instructions_ja.md](https://raw.githubusercontent.com/jakenjarvis/OOPD/refs/tags/v0.7.2/instructions/system_instructions_ja.md) ファイルの内容が必要です。
+   - **指示内容の取得:** OOPDの公式GitHubリポジトリにある [instructions/system\_instructions\_ja.md](https://raw.githubusercontent.com/jakenjarvis/OOPD/refs/tags/v0.7.2/instructions/system_instructions_ja.md) ファイルの内容が必要です。
      上記のファイルを開き、その内容**全体**をコピーしてください。
    - **Google AI Studioへの貼り付け:** Google AI Studioの画面上部にあるSystem Instructionの入力欄（「Edit system instruction」をクリックして開く）に、コピーした内容を**そのまま貼り付け**ます。
    - **保存:** 入力欄の外側をクリックするなどして、設定を保存します。
